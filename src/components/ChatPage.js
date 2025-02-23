@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { FaMicrophone } from "react-icons/fa";
 
 const ChatPage = () => {
   const [messages, setMessages] = useState([]);
@@ -41,13 +42,20 @@ const ChatPage = () => {
         ))}
       </div>
       <div className="mt-5 flex">
-        <input
+        <div className="relative w-full">
+        <textarea
           type="text"
-          className="flex-1 p-2 border rounded-lg"
+          className="w-full flex-1 p-2 border rounded-lg"
           placeholder="Type your message..."
           value={input}
           onChange={(e) => setInput(e.target.value)}
         />
+        {input === "" && (
+            <span className="absolute inset-y-0 right-2 flex items-center cursor-pointer text-gray-500">
+            <FaMicrophone className="text-xl" />
+          </span>
+          )}
+          </div>
         <button
           className="ml-2 px-4 py-2 bg-blue-500 text-white rounded-lg"
           onClick={handleSendMessage}
