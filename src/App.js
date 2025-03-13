@@ -4,10 +4,9 @@ import Sidebar from "./components/sidebar";
 import ChatPage from "./components/ChatPage";
 import BlogsPage from "./components/BlogsPage";
 import "./App.css";
-import TravelImage from "./asset/Travel.jpg";
+import TravelImage from "./asset/Travel3.jpg";
 import { FaUserCircle } from "react-icons/fa";
 import EventsPage from "./components/EventsPage";
-
 
 function App() {
   const [isChatOpen, setIsChatOpen] = useState(true);
@@ -15,6 +14,7 @@ function App() {
     <Router>
       <div className="app-container flex h-screen"
       style={{ backgroundImage: `url(${TravelImage})`,
+      boxShadow: "inset 0 0 0 2000px rgba(249, 173, 101, 0.55)",
       backgroundSize: "cover",
       backgroundPosition: "center",
       backgroundRepeat: "no-repeat",

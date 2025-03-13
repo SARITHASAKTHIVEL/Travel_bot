@@ -17,7 +17,7 @@ const Sidebar = ({ isChatOpen, setIsChatOpen }) => {
         <ul>
           <li
             className={`flex items-center justify-center w-full p-4 cursor-pointer 
-              ${location.pathname === "/chat" ? "bg-gray-700" : "hover:bg-gray-700"}`}
+              ${location.pathname === "/chat" ? "bg-gray-600" : "hover:bg-gray-700"}`}
             onClick={() => setIsChatOpen(false)}
           >
             <Link to="/chat">
@@ -26,7 +26,7 @@ const Sidebar = ({ isChatOpen, setIsChatOpen }) => {
           </li>
           <li
             className={`flex items-center justify-center w-full p-4 cursor-pointer 
-              ${location.pathname === "/share" ? "bg-gray-700" : "hover:bg-gray-700"}`}
+              ${location.pathname === "/events" ? "bg-gray-600" : "hover:bg-gray-700"}`}
             onClick={() => setIsChatOpen(false)}
           >
             <Link to="/events">
@@ -35,7 +35,7 @@ const Sidebar = ({ isChatOpen, setIsChatOpen }) => {
           </li>
           <li
             className={`flex items-center justify-center w-full p-4 cursor-pointer 
-              ${location.pathname === "/notifications" ? "bg-gray-700" : "hover:bg-gray-700"}`}
+              ${location.pathname === "/blogs" ? "bg-gray-600" : "hover:bg-gray-700"}`}
             onClick={() => setIsChatOpen(false)}
           >
             <Link to="/blogs">
