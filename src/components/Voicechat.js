@@ -84,23 +84,30 @@ const VoiceChat = ({ onClose }) => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center p-4">
-      <p className="mb-2">You said: {transcript || "..."}</p>
-      <p className="mb-4">Reply: {loading ? "Processing..." : response || "..."}</p>
+    <div className="flex flex-col items-center justify-center p-4 sm:p-6 w-full max-w-md mx-auto bg-white shadow-lg rounded-lg">
+      {/* Transcript & Response */}
+      <p className="mb-2 text-center text-gray-800 font-medium">
+        You said: <span className="font-semibold">{transcript || "..."}</span>
+      </p>
+      <p className="mb-4 text-center text-gray-700">
+        Reply: <span className="font-semibold">{loading ? "Processing..." : response || "..."}</span>
+      </p>
 
+      {/* Start Voice Chat Button */}
       {!isListening ? (
         <button
-          className="px-4 py-2 bg-green-500 text-white rounded-lg"
+          className="px-4 py-2 w-full sm:w-auto bg-green-500 text-white font-semibold rounded-lg transition hover:bg-green-600"
           onClick={() => setIsListening(true)}
         >
           Start Voice Chat
         </button>
       ) : (
-        <p className="text-blue-500">Listening...</p>
+        <p className="text-blue-500 font-semibold text-lg">Listening...</p>
       )}
 
+      {/* Close Button */}
       <button
-        className="mt-4 px-4 py-2 bg-red-500 text-white rounded-lg"
+        className="mt-4 px-4 py-2 w-full sm:w-auto bg-red-500 text-white font-semibold rounded-lg transition hover:bg-red-600"
         onClick={() => {
           setIsListening(false);
           window.speechSynthesis.cancel();
