@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Sidebar from "./components/sidebar";
 import ChatPage from "./components/ChatPage";
 import BlogsPage from "./components/BlogsPage";
@@ -35,8 +35,8 @@ function App() {
             <FaUserCircle className="text-white text-3xl cursor-pointer" />
           </div>
           <Routes>
-            <Route path="/" element={<Navigate to="/chat" />} />
-            <Route path="/chat" element={<ChatPage />} />
+            {/* <Route path="/" element={<Navigate to="/chat" />} /> */}
+            <Route path="/" element={<ChatPage />} />
             <Route path="/events" element={<EventsPage />} />
             <Route path="/blogs" element={<BlogsPage />} />
           </Routes>

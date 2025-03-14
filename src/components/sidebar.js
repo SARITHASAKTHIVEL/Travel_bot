@@ -17,10 +17,10 @@ const Sidebar = ({ isChatOpen, setIsChatOpen }) => {
         <ul>
           <li
             className={`flex items-center justify-center w-full p-4 cursor-pointer 
-              ${location.pathname === "/chat" ? "bg-gray-600" : "hover:bg-gray-700"}`}
+              ${location.pathname === "/" ? "bg-gray-600" : "hover:bg-gray-700"}`}
             onClick={() => setIsChatOpen(false)}
           >
-            <Link to="/chat">
+            <Link to="/">
               <FaComments className="text-xl" />
             </Link>
           </li>
