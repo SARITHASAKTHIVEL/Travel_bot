@@ -1,5 +1,5 @@
 import React from "react";
-import { FaComments, FaShareAlt, FaBell, FaArrowLeft, FaCalendarAlt, FaBookOpen } from "react-icons/fa";
+import { FaComments, FaCalendarAlt, FaBookOpen } from "react-icons/fa";
 import { Link, useLocation } from "react-router-dom";
 import "./sidebar.css";
 
