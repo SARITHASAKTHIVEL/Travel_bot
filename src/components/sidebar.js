@@ -2,6 +2,8 @@ import React from "react";
 import { FaComments, FaCalendarAlt, FaBookOpen } from "react-icons/fa";
 import { Link, useLocation } from "react-router-dom";
 import "./sidebar.css";
+import { Tooltip } from "react-tooltip";
+import "react-tooltip/dist/react-tooltip.css";
 
 
 const Sidebar = ({ isChatOpen, setIsChatOpen }) => {
@@ -19,28 +21,34 @@ const Sidebar = ({ isChatOpen, setIsChatOpen }) => {
             className={`flex items-center justify-center w-full p-4 cursor-pointer 
               ${location.pathname === "/" ? "bg-gray-600" : "hover:bg-gray-700"}`}
             onClick={() => setIsChatOpen(false)}
+            data-tooltip-id="chat-tooltip"
           >
             <Link to="/">
               <FaComments className="text-xl" />
             </Link>
+            <Tooltip id="chat-tooltip" place="right" content="Chat" />
           </li>
           <li
             className={`flex items-center justify-center w-full p-4 cursor-pointer 
               ${location.pathname === "/events" ? "bg-gray-600" : "hover:bg-gray-700"}`}
             onClick={() => setIsChatOpen(false)}
+            data-tooltip-id="events-tooltip"
           >
             <Link to="/events">
               <FaCalendarAlt className="text-xl" />
             </Link>
+            <Tooltip id="events-tooltip" place="right" content="Events" />
           </li>
           <li
             className={`flex items-center justify-center w-full p-4 cursor-pointer 
               ${location.pathname === "/blogs" ? "bg-gray-600" : "hover:bg-gray-700"}`}
             onClick={() => setIsChatOpen(false)}
+            data-tooltip-id="blogs-tooltip"
           >
             <Link to="/blogs">
               <FaBookOpen className="text-xl" />
             </Link>
+            <Tooltip id="blogs-tooltip" place="right" content="Blogs" />
           </li>
         </ul>
       </div>
