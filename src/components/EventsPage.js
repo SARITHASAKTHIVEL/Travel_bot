@@ -110,7 +110,7 @@ const EventsPage = () => {
           {/* Upcoming Events Section */}
           {events.upcoming.length > 0 && (
             <div>
-              <h2 className="text-2xl font-semibold text-green-600 mb-4">Upcoming Events ...</h2>
+              <h2 className="text-2xl font-semibold text-grey-600 mb-4">Upcoming Events ...</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {events.upcoming.map((event) => (
                   <div key={event.id} className="bg-white shadow-md rounded-lg overflow-hidden">

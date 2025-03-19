@@ -79,7 +79,35 @@ const BlogsPage = () => {
           description: "Jallikattu, a centuries-old bull-taming sport, is an integral part of Tamil Nadu’s Pongal celebrations, showcasing bravery, tradition, and the deep connection between farmers and native bull breeds.",
           url:"https://www.cheggindia.com/daily-buzz/jallikattu-2025-bull-taming-festival/"
         
-        }
+        },
+        
+  {
+    id: 9,
+    title: "Thanjavur Brihadeeswarar Temple: The Grandeur of Chola Architecture",
+    author: "Arun Kumar",
+    date: "Timeless Wonder",
+    image: "./blog16.webp",
+    description: "A UNESCO World Heritage site, the Brihadeeswarar Temple in Thanjavur is a masterpiece of Chola architecture, built by Raja Raja Chola I in the 11th century. The towering vimana and intricate carvings stand as a testament to Tamil Nadu’s glorious past.",
+    url: "https://www.savaari.com/blog/chola-dynasty-temples-road-trip/"
+  },
+  {
+    id: 10,
+    title: "Isha Yoga Center: A Spiritual Retreat in Coimbatore",
+    author: "Meera Subramanian",
+    date: "Open Year-Round",
+    image: "./blog10.webp",
+    description: "Nestled at the foothills of the Velliangiri Mountains, the Isha Yoga Center is a spiritual haven established by Sadhguru. The iconic 112-foot Adiyogi Shiva statue symbolizes the science of yoga and attracts thousands of visitors.",
+    url: "https://www.makemytrip.com/tripideas/attractions/isha-yoga-center"
+  },
+  {
+    id: 11,
+    title: "Kanyakumari: The Land Where Oceans Meet",
+    author: "Ravi Shankar",
+    date: "Best time to visit: October - March",
+    image: "./blog12.webp",
+    description: "Located at the southernmost tip of India, Kanyakumari is famous for its mesmerizing sunrise and sunset views, the Vivekananda Rock Memorial, and the convergence of the Arabian Sea, Bay of Bengal, and Indian Ocean.",
+    url: "https://www.tamilnadutourism.tn.gov.in/destinations/kanyakumari"
+  },
       ]);
       setLoading(false);
     }, 1000);
