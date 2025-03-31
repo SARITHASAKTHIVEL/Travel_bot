@@ -1,6 +1,8 @@
 
 import React, { useState } from "react";
 import { FaMicrophone, FaPaperPlane } from "react-icons/fa";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm"; 
 
 const ChatPage = () => {
   const [messages, setMessages] = useState([]);
@@ -28,13 +30,13 @@ const ChatPage = () => {
 
       const data = await response.json();
 
-      if (response.ok) {
-        const botMessage = { text: data.answer, sender: "bot" };
+      if (response.ok && data.status === "success") {
+        const botMessage = { text: data.data.answer, sender: "bot" };
         setMessages((prev) => [...prev, botMessage]);
 
         // Speak the response if the input was voice-based
         if (isVoice) {
-          speak(data.answer);
+          speak(data.data.answer);
         }
       } else {
         setMessages((prev) => [...prev, { text: "Error: Could not get response", sender: "bot" }]);
@@ -102,7 +104,7 @@ const ChatPage = () => {
                 msg.sender === "user" ? "bg-blue-500 text-white" : "bg-gray-200 text-black"
               }`}
             >
-              {msg.text}
+              <ReactMarkdown remarkPlugins={[remarkGfm]}>{msg.text}</ReactMarkdown> 
             </span>
           </div>
         ))}
