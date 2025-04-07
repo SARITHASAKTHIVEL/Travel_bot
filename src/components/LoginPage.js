@@ -254,7 +254,7 @@ const LoginPage = ({ setIsAuthenticated, setUsername }) => {
       </div>
 
       {/* Right Section with Login Form */}
-      <div className="w-1/2 flex justify-center items-center bg-gray-900">
+      <div className="w-1/2 flex justify-center items-center bg-peach">
         <div className="bg-white bg-opacity-20 backdrop-blur-lg p-8 rounded-lg shadow-lg w-96">
           <h2 className="text-3xl font-bold text-center text-white mb-6">
             Welcome Back!
@@ -292,10 +292,11 @@ const LoginPage = ({ setIsAuthenticated, setUsername }) => {
               Login
             </button>
           </form>
-          <div className="w-full flex flex-col items-center px-4">
+          
           <div className="text-white text-center mb-2">OR</div>
 
           <div className="w-full">
+          <div className="w-full" style={{ display: 'flex', justifyContent: 'center' }}>
             <GoogleLogin
               onSuccess={handleGoogleSignIn}
               onError={() => console.log("Login Failed")}
@@ -304,7 +305,8 @@ const LoginPage = ({ setIsAuthenticated, setUsername }) => {
               width="100%"
             />
           </div>
-          </div>
+        </div>
+         
           {loading && (
             <p className="text-white text-center mt-4 animate-pulse">Please wait...</p>
           )}

@@ -4,7 +4,7 @@ import Sidebar from "./components/sidebar";
 import ChatPage from "./components/ChatPage";
 import BlogsPage from "./components/BlogsPage";
 import "./App.css";
-import TravelImage from "./asset/blog4.jpg";
+import TravelImage from "./asset/bg3.jpg";
 import { FaUserCircle, FaSignOutAlt } from "react-icons/fa";
 import EventsPage from "./components/EventsPage";
 import LoginPage from "./components/LoginPage";
@@ -43,9 +43,9 @@ function App() {
         className="app-container flex h-screen"
         style={{
           backgroundImage: `url(${TravelImage})`,
-          // boxShadow: "inset 0 0 0 2000px rgba(249, 173, 101, 0.55)",
+          boxShadow: "inset 0 0 0 2000px rgba(255, 161, 73, 0.46)",
           // boxShadow: "inset 0 0 0 2000px rgba(237, 132, 33, 0.74)",
-          boxShadow: "inset 0 0 0 2000px rgba(241, 131, 29, 0.79)",
+          // boxShadow: "inset 0 0 0 2000px rgba(241, 131, 29, 0.79)",
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",

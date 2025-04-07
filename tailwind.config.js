@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       colors: {
         amberOklch: "oklch(0.656 0.241 354.308)",
+        peach: "#eb8951",
       },
     },
   },
