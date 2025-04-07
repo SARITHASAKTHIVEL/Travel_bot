@@ -292,18 +292,18 @@ const LoginPage = ({ setIsAuthenticated, setUsername }) => {
               Login
             </button>
           </form>
-
-          <div className="flex flex-col justify-center align-items-center">
-
+          <div className="w-full flex flex-col items-center px-4">
           <div className="text-white text-center mb-2">OR</div>
 
-          <GoogleLogin
-            onSuccess={handleGoogleSignIn}
-            onError={() => console.log("Login Failed")}
-            theme="outline"
-            size="large"
-            width="100%"
-          />
+          <div className="w-full">
+            <GoogleLogin
+              onSuccess={handleGoogleSignIn}
+              onError={() => console.log("Login Failed")}
+              theme="outline"
+              size="large"
+              width="100%"
+            />
+          </div>
           </div>
           {loading && (
             <p className="text-white text-center mt-4 animate-pulse">Please wait...</p>
