@@ -287,11 +287,13 @@ const LoginPage = ({ setIsAuthenticated, setUsername }) => {
             )}
             <button
               type="submit"
-              className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition duration-300 mb-5"
+              className="w-full bg-blue-500 text-white py-2 px-3 rounded-lg hover:bg-blue-600 transition duration-300 mb-5"
             >
               Login
             </button>
           </form>
+
+          <div className="flex flex-col justify-center align-items-center">
 
           <div className="text-white text-center mb-2">OR</div>
 
@@ -302,6 +304,7 @@ const LoginPage = ({ setIsAuthenticated, setUsername }) => {
             size="large"
             width="100%"
           />
+          </div>
           {loading && (
             <p className="text-white text-center mt-4 animate-pulse">Please wait...</p>
           )}
