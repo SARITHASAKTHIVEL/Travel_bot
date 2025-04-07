@@ -12,29 +12,29 @@ const ChatPage = () => {
 
   const handleSendMessage = async (text, sender = "user", isVoice = false) => {
     if (!text.trim()) return;
-
+  
     const userMessage = { text, sender };
     setMessages((prev) => [...prev, userMessage]);
     setInput("");
     setLoading(true);
-
+  
     try {
-      // const response = await fetch("http://127.0.0.1:5000/ask", {
-      const response = await fetch("https://server-bot-000v.onrender.com/ask", {
+      const response = await fetch("http://127.0.0.1:5000/ask", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ question: text }),
       });
-
+  
       const data = await response.json();
-
+  
       if (response.ok && data.status === "success") {
-        const botMessage = { text: data.data.answer, sender: "bot" };
+        const botMessage = {
+          text: data.data.answer,
+          sender: "bot",
+          locations: data.data.locations || [], // add this!
+        };
         setMessages((prev) => [...prev, botMessage]);
-
-        // Speak the response if the input was voice-based
+  
         if (isVoice) {
           speak(data.data.answer);
         }
@@ -48,6 +48,7 @@ const ChatPage = () => {
       setLoading(false);
     }
   };
+  
 
   const startListening = () => {
     const SpeechRecognition =
@@ -94,19 +95,50 @@ const ChatPage = () => {
   };
 
   return (
-    <div className="h-full flex flex-col px-4 sm:px-20 lg:px-40 xl:px-80">
+    <div className="h-full flex flex-col px-2 sm:px-20 lg:px-40 xl:px-80">
       {/* Chat Messages */}
-      <div className="flex-1 overflow-y-auto p-4 rounded-lg">
+      <div className="flex-1  p-4 rounded-lg">
         {messages.map((msg, index) => (
-          <div key={index} className={`mb-4 ${msg.sender === "user" ? "text-right" : "text-left"}`}>
-            <span
-              className={`inline-block px-4 py-2 rounded-lg ${
-                msg.sender === "user" ? "bg-blue-500 text-white" : "bg-gray-200 text-black"
-              }`}
-            >
-              <ReactMarkdown remarkPlugins={[remarkGfm]}>{msg.text}</ReactMarkdown> 
-            </span>
-          </div>
+          <div key={index} className={`mb-6 ${msg.sender === "user" ? "text-right" : "text-left"}`}>
+          <span
+            className={`inline-block px-4 py-3 rounded-lg ${
+              msg.sender === "user" ? "bg-gray-900 text-white" : "bg-gray-200 text-black"
+            }`}
+          >
+            <ReactMarkdown remarkPlugins={[remarkGfm]}>{msg.text}</ReactMarkdown>
+          </span>
+      
+          {/* Show locations if bot message includes them */}
+          {msg.sender === "bot" && msg.locations?.length > 0 && (
+            <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {msg.locations && msg.locations.map((loc, locIndex) => (
+                <div
+                  key={locIndex}
+                  className="bg-white shadow-md border rounded-lg overflow-hidden"
+                >
+                  {loc.image_url && (
+                    <img
+                      src={loc.image_url}
+                      alt={loc.name}
+                      className="w-full h-48 object-cover"
+                    />
+                  )}
+                  <div className="p-3">
+                    <h3 className="text-lg font-semibold mb-1">{loc.name}</h3>
+                    <a
+                      href={loc.map_link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-500 hover:underline text-sm"
+                    >
+                      View on Google Maps
+                    </a>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
         ))}
         {loading && <div className="text-gray-500 text-center mt-2">Bot is typing...</div>}
       </div>
@@ -136,7 +168,7 @@ const ChatPage = () => {
         {/* Send Button */}
         
         <button
-          className="ml-2 px-5 py-5 bg-gray-900 text-white rounded-lg whitespace-nowrap"
+          className="ml-2 mb-2 px-5 py-4 bg-gray-900 text-white rounded-lg whitespace-nowrap"
           onClick={() => handleSendMessage(input)}
           disabled={loading}
         >

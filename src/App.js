@@ -4,7 +4,7 @@ import Sidebar from "./components/sidebar";
 import ChatPage from "./components/ChatPage";
 import BlogsPage from "./components/BlogsPage";
 import "./App.css";
-import TravelImage from "./asset/bg4.webp";
+import TravelImage from "./asset/blog4.jpg";
 import { FaUserCircle, FaSignOutAlt } from "react-icons/fa";
 import EventsPage from "./components/EventsPage";
 import LoginPage from "./components/LoginPage";
@@ -60,21 +60,24 @@ function App() {
           }`}
           style={{ maxHeight: "100vh" }}
         >
-          <div className="absolute top-0 right-0 w-9/12 h-16 flex justify-end items-center pr-6 bg-opacity-75 z-10">
-                    <span className="text-white text-lg mr-3">{username}</span>
-                    <FaUserCircle className="text-white text-3xl cursor-pointer" />
-                    <FaSignOutAlt
-                      className="text-white text-2xl ml-4 cursor-pointer"
-                      onClick={handleLogout}
-                      title="Logout"
-                    />
-                  </div>
-          <Routes>
-            {/* <Route path="/" element={<Navigate to="/chat" />} /> */}
-            <Route path="/" element={<ChatPage />} />
-            <Route path="/events" element={<EventsPage />} />
-            <Route path="/blogs" element={<BlogsPage />} />
-          </Routes>
+          <div className="fixed top-0 right-0 h-16 flex justify-end items-center pr-6  bg-opacity-90 ">
+    <span className="text-white text-lg font-semibold mr-3">{username}</span>
+    <FaUserCircle className="text-white text-3xl cursor-pointer" />
+    <FaSignOutAlt
+      className="text-white text-2xl ml-4 cursor-pointer"
+      onClick={handleLogout}
+      title="Logout"
+    />
+  </div>
+
+  {/* Main Content */}
+  {/* <div className="pt-5"> */}
+    <Routes>
+      <Route path="/" element={<ChatPage />} />
+      <Route path="/events" element={<EventsPage />} />
+      <Route path="/blogs" element={<BlogsPage />} />
+    </Routes>
+  {/* </div> */}
         </div>
       </div>
        }
