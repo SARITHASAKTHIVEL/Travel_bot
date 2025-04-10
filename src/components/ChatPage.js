@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { FaMicrophone, FaPaperPlane } from "react-icons/fa";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm"; 
+import rehypeRaw from "rehype-raw";
+
 
 const ChatPage = () => {
   const [messages, setMessages] = useState([]);
@@ -19,14 +21,17 @@ const ChatPage = () => {
     setLoading(true);
   
     try {
-      // const response = await fetch("http://127.0.0.1:5000/ask", {
+        // const response = await fetch("http://127.0.0.1:5000/ask", {
         const response = await fetch("https://server-bot-000v.onrender.com/ask", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ question: text }),
+        
       });
   
       const data = await response.json();
+      // console.log("Bot reply text:", data.data.answer);
+
   
       if (response.ok && data.status === "success") {
         const botMessage = {
@@ -106,7 +111,10 @@ const ChatPage = () => {
               msg.sender === "user" ? "bg-gray-900 text-white" : "bg-gray-200 text-black"
             }`}
           >
-            <ReactMarkdown remarkPlugins={[remarkGfm]}>{msg.text}</ReactMarkdown>
+            <ReactMarkdown remarkPlugins={[remarkGfm]}
+            rehypePlugins={[rehypeRaw]}>{msg.text}
+              
+            </ReactMarkdown>
           </span>
       
           {/* Show locations if bot message includes them */}
@@ -125,7 +133,10 @@ const ChatPage = () => {
                     />
                   )}
                   <div className="p-3">
-                    <h3 className="text-lg font-semibold mb-1">{loc.name}</h3>
+                  <ReactMarkdown remarkPlugins={[remarkGfm]}
+                  rehypePlugins={[rehypeRaw]}>
+                    {loc.name}
+                  </ReactMarkdown>
                     <a
                       href={loc.map_link}
                       target="_blank"
